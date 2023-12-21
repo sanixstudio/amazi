@@ -13,6 +13,11 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import axios from "axios";
 import { ChatCompletionUserMessageParam } from "openai/resources/index.mjs";
+import Empty from "@/components/empty";
+import { cn } from "@/lib/utils";
+import UserAvatar from "@/components/user-avatar";
+import BotAvatar from "@/components/bot-avatar";
+import Loader from "@/components/loader";
 
 const ConversationPage = () => {
   const router = useRouter();
@@ -40,7 +45,7 @@ const ConversationPage = () => {
         messages: newMessages,
       });
 
-      setMessages((current) => [...current, userMessage, response.data]);
+      setMessages((current) => [...current, response.data, userMessage]);
 
       form.reset();
     } catch (error: any) {
@@ -93,18 +98,36 @@ const ConversationPage = () => {
             </form>
           </Form>
         </div>
+        {isLoading && (
+          <div className="p-8 rounded-lg w-full flex items-center justify-center bg-muted">
+            <Loader />
+          </div>
+        )}
         <div className="space-y-4 mt-4">
-          {messages.length === 0 && !isLoading && <div>Empty: No conversations yet</div>}
+          {messages.length === 0 && !isLoading && (
+            <Empty label="No conversation started." />
+          )}
         </div>
         <div className="space-y-4 mt-4">
           <div className="flex flex-col-reverse gap-y-4">
             {messages.map((message, index) => (
-              <div key={index}>
-                {Array.isArray(message.content)
-                  ? message.content.map((part) => (
-                      <span key={part.type}>{part.type}</span>
-                    ))
-                  : message.content}
+              <div
+                key={index}
+                className={cn(
+                  "p-8 w-full flex items-start gap-x-8 rounded-lg border",
+                  message.role === "user"
+                    ? "bg-white border border-black/10"
+                    : "bg-muted mb-12"
+                )}
+              >
+                {message.role === "user" ? <UserAvatar /> : <BotAvatar />}
+                {Array.isArray(message.content) ? (
+                  message.content.map((part) => (
+                    <span key={part.type}>{part.type}</span>
+                  ))
+                ) : (
+                  <p className="text-sm">{message.content}</p>
+                )}
               </div>
             ))}
           </div>
