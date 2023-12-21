@@ -6,9 +6,9 @@ import { ClerkProvider } from "@clerk/nextjs";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Bano AI solution",
+  title: "Amazi AI solution",
   description:
-    "Bano AI solution for generating AI based Chat, Images, Video and more...",
+    "Amazi AI solution for generating AI based Chat, Images, Video and more...",
 };
 
 export default function RootLayout({
