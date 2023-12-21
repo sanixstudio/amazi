@@ -1,14 +1,107 @@
-import Image from "next/image";
+import React from "react";
 
-const Loader = () => {
+const Spinner: React.FC = () => {
   return (
-    <div className="h-full flex flex-col gap-y-4 items-center justify-center">
-      <div className="w-10 h-10 relative animate-spin">
-        <Image src={"/logo.png"} alt="logo" fill />
+    <div className="fixed top-0 left-0 w-full h-screen backdrop-blur-sm flex justify-center items-center">
+      <div className="w-56 h-56">
+        <style>
+          {`
+          @keyframes ldio-yrmauo608k {
+            0% { background: #5699d2 }
+            12.5% { background: #5699d2 }
+            12.625% { background: #1d3f72 }
+            100% { background: #1d3f72 }
+          }
+
+          .ldio-yrmauo608k div {
+            position: absolute;
+            width: 53.04px;
+            height: 53.04px;
+            background: #1d3f72;
+            animation: ldio-yrmauo608k 0.9900990099009901s linear infinite;
+          }
+
+          .loadingio-spinner-blocks-8gnj0b64cg9 {
+            width: 221px;
+            height: 221px;
+            display: inline-block;
+            overflow: hidden;
+            background: #f1f2f3;
+          }
+
+          .ldio-yrmauo608k {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transform: translateZ(0) scale(1);
+            backface-visibility: hidden;
+            transform-origin: 0 0;
+          }
+
+          .ldio-yrmauo608k div {
+            box-sizing: content-box;
+          }
+        `}
+        </style>
+        <div className="loadingio-spinner-blocks-8gnj0b64cg9">
+          <div className="ldio-yrmauo608k">
+            <div
+              style={{ left: "24.31px", top: "24.31px", animationDelay: "0s" }}
+            ></div>
+            <div
+              style={{
+                left: "83.98px",
+                top: "24.31px",
+                animationDelay: "0.12376237623762376s",
+              }}
+            ></div>
+            <div
+              style={{
+                left: "143.65px",
+                top: "24.31px",
+                animationDelay: "0.24752475247524752s",
+              }}
+            ></div>
+            <div
+              style={{
+                left: "24.31px",
+                top: "83.98px",
+                animationDelay: "0.8663366336633663s",
+              }}
+            ></div>
+            <div
+              style={{
+                left: "143.65px",
+                top: "83.98px",
+                animationDelay: "0.3712871287128713s",
+              }}
+            ></div>
+            <div
+              style={{
+                left: "24.31px",
+                top: "143.65px",
+                animationDelay: "0.7425742574257426s",
+              }}
+            ></div>
+            <div
+              style={{
+                left: "83.98px",
+                top: "143.65px",
+                animationDelay: "0.6188118811881188s",
+              }}
+            ></div>
+            <div
+              style={{
+                left: "143.65px",
+                top: "143.65px",
+                animationDelay: "0.49504950495049505s",
+              }}
+            ></div>
+          </div>
+        </div>
       </div>
-      <p className="text-sm text-muted-foreground">AMAZI AI is thinking...</p>
     </div>
   );
 };
 
-export default Loader;
+export default Spinner;
