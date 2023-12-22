@@ -20,22 +20,21 @@ export async function POST(req: Request) {
       return new NextResponse("Prompt is required", { status: 400 });
     }
 
-    const response = await replicate.run(
-      "riffusion/riffusion:8cf61ea6c56afd61d8f5b9ffd14d7c216c0a93844ce2d82ac1c9ecc9c7f24e05",
+    const output = await replicate.run(
+      "cjwbw/damo-text-to-video:1e205ea73084bd17a0a3b43396e49ba0d6bc2e754e9283b2df49fad2dcf95755",
       {
         input: {
-          alpha: 0.5,
-          prompt_a: prompt,
-          denoising: 0.75,
-          seed_image_id: "vibes",
+          fps: 8,
+          prompt,
+          num_frames: 50,
           num_inference_steps: 50,
         },
       }
     );
 
-    return NextResponse.json(response);
+    return NextResponse.json(output);
   } catch (error) {
-    console.error("[MUSIC_ERROR]", error);
+    console.error("[VIDEO_ERROR]", error);
     return new NextResponse("Internal Server Error", { status: 500 });
   }
 }

@@ -43,8 +43,6 @@ const MusicPage = () => {
     }
   };
 
-  console.log(music);
-
   return (
     <div>
       <Heading
