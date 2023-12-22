@@ -68,6 +68,11 @@
   }
 }
 
+html,
+body {
+  height: 100vh;
+}
+
 @layer base {
   * {
     @apply border-border;
@@ -78,13 +83,13 @@
 }
 
 @layer components {
-  .ghostPink {
-    color: #f8e7ee;
-  }
   .ghostViolet {
     color: #f3eefe;
   }
   .ghostGreen {
     color: #e7f2eb;
+  }
+  .ghostPink {
+    color: #f8e7ee;
   }
 }
