@@ -6,35 +6,24 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { zodResolver } from "@hookform/resolvers/zod";
 
-import { Download, ImageIcon, Music2Icon, VideoIcon } from "lucide-react";
+import { Music2Icon } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { Form, FormControl, FormField, FormItem } from "@/components/ui/form";
 
 import { Heading } from "@/components/heading";
-import { amountOptions, formSchema, resolutionOptions } from "./constants";
+import { formSchema } from "./constants";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import Empty from "@/components/empty";
 import Loader from "@/components/loader";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-import { Card, CardFooter } from "@/components/ui/card";
-import Image from "next/image";
 
 const MusicPage = () => {
   const router = useRouter();
-  const [images, setImages] = useState<string[]>();
+  const [music, setMusic] = useState<{ audio: string }>();
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      resolution: "512x512",
       prompt: "",
-      amount: "1",
     },
   });
 
@@ -42,10 +31,9 @@ const MusicPage = () => {
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
-      setImages([]);
-      const response = await axios.post("/api/image", values);
-      const urls = response.data.map((image: { url: string }) => image.url);
-      setImages(urls);
+      setMusic({ audio: "" });
+      const response = await axios.post("/api/music", values);
+      setMusic(response.data);
       form.reset();
     } catch (error: any) {
       //TODO: Open Pro Modal
@@ -54,6 +42,8 @@ const MusicPage = () => {
       router.refresh();
     }
   };
+
+  console.log(music);
 
   return (
     <div>
@@ -75,12 +65,12 @@ const MusicPage = () => {
                 name="prompt"
                 render={({ field }) => {
                   return (
-                    <FormItem className="col-span-12 lg:col-span-6">
+                    <FormItem className="col-span-12 lg:col-span-10">
                       <FormControl className="m-0 p-0">
                         <Input
                           className="border-0 outline-none focus-visible:ring-0 focus-visible:ring-transparent"
                           disabled={isLoading}
-                          placeholder="Ex: Cat floating in the space in a cosmic scene wearing an astronaut's suit"
+                          placeholder="Ex: jazz music"
                           {...field}
                         />
                       </FormControl>
@@ -88,63 +78,6 @@ const MusicPage = () => {
                   );
                 }}
               />
-
-              <FormField
-                control={form.control}
-                name="amount"
-                render={({ field }) => (
-                  <FormItem className="col-span-12 lg:col-span-2">
-                    <Select
-                      disabled={isLoading}
-                      onValueChange={field.onChange}
-                      value={field.value}
-                      defaultValue={field.value}
-                    >
-                      <FormControl>
-                        <SelectTrigger>
-                          <SelectValue defaultValue={field.value} />
-                        </SelectTrigger>
-                      </FormControl>
-                      <SelectContent>
-                        {amountOptions.map((option) => (
-                          <SelectItem key={option.value} value={option.value}>
-                            {option.label}
-                          </SelectItem>
-                        ))}
-                      </SelectContent>
-                    </Select>
-                  </FormItem>
-                )}
-              />
-
-              <FormField
-                control={form.control}
-                name="resolution"
-                render={({ field }) => (
-                  <FormItem className="col-span-12 lg:col-span-2">
-                    <Select
-                      disabled={isLoading}
-                      onValueChange={field.onChange}
-                      value={field.value}
-                      defaultValue={field.value}
-                    >
-                      <FormControl>
-                        <SelectTrigger>
-                          <SelectValue defaultValue={field.value} />
-                        </SelectTrigger>
-                      </FormControl>
-                      <SelectContent>
-                        {resolutionOptions.map((option) => (
-                          <SelectItem key={option.value} value={option.value}>
-                            {option.label}
-                          </SelectItem>
-                        ))}
-                      </SelectContent>
-                    </Select>
-                  </FormItem>
-                )}
-              />
-
               <Button
                 className="col-span-12 lg:col-span-2 w-full bg-emerald-700"
                 disabled={isLoading}
@@ -160,7 +93,7 @@ const MusicPage = () => {
           </div>
         )}
         <div className="space-y-4 mt-4">
-          {images === undefined && !isLoading && (
+          {!music === undefined && !isLoading && (
             <Empty
               label="No music generated yet."
               icon={<Music2Icon size={256} className="ghostEmerald" />}
@@ -168,25 +101,11 @@ const MusicPage = () => {
           )}
         </div>
         <div className="space-y-4 mt-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 mt-8">
-            {images?.map((src) => (
-              <Card key={src} className="rounded-lg overflow-hidden">
-                <div className="relative aspect-square">
-                  <Image src={src} alt={"Image"} fill />
-                </div>
-                <CardFooter className="p-2">
-                  <Button
-                    variant={"secondary"}
-                    className="w-full"
-                    onClick={() => window.open(src)}
-                  >
-                    <Download className="h-4 w-4 mr-2" />
-                    Download
-                  </Button>
-                </CardFooter>
-              </Card>
-            ))}
-          </div>
+          {music && (
+            <audio controls className="w-full mt8">
+              <source src={music.audio} type="audio/wav" />
+            </audio>
+          )}
         </div>
       </div>
     </div>

@@ -1,7 +1,7 @@
 "use client";
 
 import * as z from "zod";
-import { Code2, MessageSquare } from "lucide-react";
+import { MessageSquare } from "lucide-react";
 import { Heading } from "@/components/heading";
 import { useForm } from "react-hook-form";
 import { formSchema } from "./constants";
