@@ -1,7 +1,7 @@
 "use client";
 
 import * as z from "zod";
-import { Code2 } from "lucide-react";
+import { Code2, Code2Icon } from "lucide-react";
 import { Heading } from "@/components/heading";
 import { useForm } from "react-hook-form";
 import { formSchema } from "./constants";
@@ -19,6 +19,7 @@ import UserAvatar from "@/components/user-avatar";
 import BotAvatar from "@/components/bot-avatar";
 import Loader from "@/components/loader";
 import ReactMarkdown from "react-markdown";
+import CopyButton from "@/components/copy-button";
 
 const CodePage = () => {
   const router = useRouter();
@@ -91,7 +92,7 @@ const CodePage = () => {
                 }}
               />
               <Button
-                className="col-span-12 lg:col-span-2 w-full"
+                className="col-span-12 lg:col-span-2 w-full bg-green-700"
                 disabled={isLoading}
               >
                 Generate
@@ -106,7 +107,10 @@ const CodePage = () => {
         )}
         <div className="space-y-4 mt-4">
           {messages.length === 0 && !isLoading && (
-            <Empty label="No code has been generated yet." />
+            <Empty
+              label="No code has been generated."
+              icon={<Code2Icon size={256} className="ghostGreen" />}
+            />
           )}
         </div>
         <div className="space-y-4 mt-4">
@@ -115,12 +119,19 @@ const CodePage = () => {
               <div
                 key={index}
                 className={cn(
-                  "p-8 w-full flex items-start gap-x-8 rounded-lg border",
+                  "p-8 w-full flex items-start gap-x-8 rounded-lg border relative",
                   message.role === "user"
                     ? "bg-white border border-black/10"
                     : "bg-muted mb-12"
                 )}
               >
+                {message.role !== "user" && (
+                  <div className="w-full bg-green-700/10 absolute top-0 left-0 h-10">
+                    <div className="flex items-center h-full justify-end">
+                      <CopyButton bgColor={"bg-green-700/60"} />
+                    </div>
+                  </div>
+                )}
                 {message.role === "user" ? <UserAvatar /> : <BotAvatar />}
                 {Array.isArray(message.content) ? (
                   message.content.map((part) => (
@@ -141,7 +152,10 @@ const CodePage = () => {
                         />
                       ),
                     }}
-                    className="text-sm overflow-hidden leading-7"
+                    className={cn(
+                      "text-sm overflow-hidden leading-7",
+                      message.role !== "user" && "mt-8"
+                    )}
                   >
                     {message.content || ""}
                   </ReactMarkdown>

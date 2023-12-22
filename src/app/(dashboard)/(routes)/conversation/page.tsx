@@ -1,7 +1,7 @@
 "use client";
 
 import * as z from "zod";
-import { MessageSquare } from "lucide-react";
+import { Code2, MessageSquare } from "lucide-react";
 import { Heading } from "@/components/heading";
 import { useForm } from "react-hook-form";
 import { formSchema } from "./constants";
@@ -18,6 +18,7 @@ import { cn } from "@/lib/utils";
 import UserAvatar from "@/components/user-avatar";
 import BotAvatar from "@/components/bot-avatar";
 import Loader from "@/components/loader";
+import CopyButton from "@/components/copy-button";
 
 const ConversationPage = () => {
   const router = useRouter();
@@ -90,7 +91,7 @@ const ConversationPage = () => {
                 }}
               />
               <Button
-                className="col-span-12 lg:col-span-2 w-full"
+                className="col-span-12 lg:col-span-2 w-full bg-violet-500"
                 disabled={isLoading}
               >
                 Generate
@@ -105,7 +106,10 @@ const ConversationPage = () => {
         )}
         <div className="space-y-4 mt-4">
           {messages.length === 0 && !isLoading && (
-            <Empty label="No conversation started." />
+            <Empty
+              label="No conversation started."
+              icon={<MessageSquare size={256} className="ghostViolet" />}
+            />
           )}
         </div>
         <div className="space-y-4 mt-4">
@@ -114,19 +118,33 @@ const ConversationPage = () => {
               <div
                 key={index}
                 className={cn(
-                  "p-8 w-full flex items-start gap-x-8 rounded-lg border",
+                  "p-8 w-full flex items-start gap-x-8 rounded-lg border relative",
                   message.role === "user"
                     ? "bg-white border border-black/10"
                     : "bg-muted mb-12"
                 )}
               >
+                {message.role !== "user" && (
+                  <div className="w-full bg-violet-700/10 absolute top-0 left-0 h-10">
+                    <div className="flex items-center h-full justify-end">
+                      <CopyButton bgColor={"bg-violet-700/60"} />
+                    </div>
+                  </div>
+                )}
                 {message.role === "user" ? <UserAvatar /> : <BotAvatar />}
                 {Array.isArray(message.content) ? (
                   message.content.map((part) => (
                     <span key={part.type}>{part.type}</span>
                   ))
                 ) : (
-                  <p className="text-sm">{message.content}</p>
+                  <p
+                    className={cn(
+                      "text-sm overflow-hidden leading-7",
+                      message.role !== "user" && "mt-8"
+                    )}
+                  >
+                    {message.content}
+                  </p>
                 )}
               </div>
             ))}

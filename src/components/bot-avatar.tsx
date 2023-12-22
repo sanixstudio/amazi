@@ -2,7 +2,7 @@ import { Avatar, AvatarImage, Fallback } from "@radix-ui/react-avatar";
 
 const BotAvatar = () => {
   return (
-    <Avatar className="">
+    <Avatar className="mt-8">
       <AvatarImage
         src={"/images/ai-bot.png"}
         alt="ai bot"

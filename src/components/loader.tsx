@@ -2,7 +2,7 @@ import React from "react";
 
 const Spinner: React.FC = () => {
   return (
-    <div className="fixed top-0 left-0 w-full h-screen backdrop-blur-sm flex justify-center items-center">
+    <div className="flex justify-center items-center transition ease-in">
       <div className="w-56 h-56">
         <style>
           {`
@@ -26,7 +26,7 @@ const Spinner: React.FC = () => {
             height: 221px;
             display: inline-block;
             overflow: hidden;
-            background: #f1f2f3;
+            background: #transparent;
           }
 
           .ldio-yrmauo608k {
