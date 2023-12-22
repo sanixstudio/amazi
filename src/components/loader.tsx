@@ -1,23 +1,17 @@
-import React from "react";
-
-const Spinner: React.FC = () => {
+const Loader = ({ color }: { color: string }) => {
   return (
     <div className="flex justify-center items-center transition ease-in">
       <div className="w-56 h-56">
         <style>
           {`
           @keyframes ldio-yrmauo608k {
-            0% { background: #5699d2 }
-            12.5% { background: #5699d2 }
-            12.625% { background: #1d3f72 }
-            100% { background: #1d3f72 }
+            12.5% { background: ${color} }
           }
 
           .ldio-yrmauo608k div {
             position: absolute;
             width: 53.04px;
             height: 53.04px;
-            background: #1d3f72;
             animation: ldio-yrmauo608k 0.9900990099009901s linear infinite;
           }
 
@@ -104,4 +98,4 @@ const Spinner: React.FC = () => {
   );
 };
 
-export default Spinner;
+export default Loader;

@@ -6,7 +6,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { zodResolver } from "@hookform/resolvers/zod";
 
-import { Download, ImageIcon } from "lucide-react";
+import { Download, ImageIcon, Music2Icon, VideoIcon } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { Form, FormControl, FormField, FormItem } from "@/components/ui/form";
 
@@ -26,7 +26,7 @@ import {
 import { Card, CardFooter } from "@/components/ui/card";
 import Image from "next/image";
 
-const ImagePage = () => {
+const MusicPage = () => {
   const router = useRouter();
   const [images, setImages] = useState<string[]>();
   const form = useForm<z.infer<typeof formSchema>>({
@@ -58,11 +58,11 @@ const ImagePage = () => {
   return (
     <div>
       <Heading
-        title="Image Generation"
-        description="Generate image with your descriptive prompts"
-        icon={ImageIcon}
-        iconColor="text-pink-700"
-        bgColor="bg-pink-700/10"
+        title="Music Generation"
+        description="Generate music with your descriptive prompts"
+        icon={Music2Icon}
+        iconColor="text-emerald-500"
+        bgColor="bg-emerald-500/10"
       />
       <div className="px-4 lg:px-8">
         <div>
@@ -146,7 +146,7 @@ const ImagePage = () => {
               />
 
               <Button
-                className="col-span-12 lg:col-span-2 w-full bg-pink-700"
+                className="col-span-12 lg:col-span-2 w-full bg-emerald-700"
                 disabled={isLoading}
               >
                 Generate
@@ -156,14 +156,14 @@ const ImagePage = () => {
         </div>
         {isLoading && (
           <div className="p-8 rounded-lg w-full">
-            <Loader color="#BE185D" />
+            <Loader color="#15803D" />
           </div>
         )}
         <div className="space-y-4 mt-4">
           {images === undefined && !isLoading && (
             <Empty
-              label="No conversation started."
-              icon={<ImageIcon size={256} className="ghostPink" />}
+              label="No music generated yet."
+              icon={<Music2Icon size={256} className="ghostEmerald" />}
             />
           )}
         </div>
@@ -193,4 +193,4 @@ const ImagePage = () => {
   );
 };
 
-export default ImagePage;
+export default MusicPage;

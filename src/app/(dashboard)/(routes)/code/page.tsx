@@ -102,7 +102,7 @@ const CodePage = () => {
         </div>
         {isLoading && (
           <div className="p-8 rounded-lg w-full">
-            <Loader />
+            <Loader color="#15803D" />
           </div>
         )}
         <div className="space-y-4 mt-4">

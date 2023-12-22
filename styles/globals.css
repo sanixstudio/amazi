@@ -83,6 +83,21 @@ body {
 }
 
 @layer components {
+  .Violet {
+    color: #8B5CF6;
+  }
+  .Green {
+    color: #047857;
+  }
+  .Pink {
+    color: #BE185D;
+  }
+  .Orange {
+    color: #C2410C;
+  }
+  .Emerald {
+    color: #15803D;
+  }
   .ghostViolet {
     color: #f3eefe;
   }
@@ -91,5 +106,11 @@ body {
   }
   .ghostPink {
     color: #f8e7ee;
+  }
+  .ghostOrange {
+    color: #f9ece6;
+  }
+  .ghostEmerald {
+    color: #e7f8f2;
   }
 }
