@@ -20,9 +20,11 @@ import BotAvatar from "@/components/bot-avatar";
 import Loader from "@/components/loader";
 import ReactMarkdown from "react-markdown";
 import { CopyButton } from "@/components/copy-button";
+import { useProModel } from "@/hooks/useProModel";
 
 const CodePage = () => {
   const router = useRouter();
+  const proModal = useProModel();
   const [messages, setMessages] = useState<ChatCompletionUserMessageParam[]>(
     []
   );
@@ -51,7 +53,8 @@ const CodePage = () => {
 
       form.reset();
     } catch (error: any) {
-      //TODO: Open Pro Modal
+      if (error?.response?.status === 403) proModal.onOpen();
+
       console.log(error);
     } finally {
       router.refresh();

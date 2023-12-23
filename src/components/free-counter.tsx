@@ -5,15 +5,18 @@ import { Progress } from "./ui/progress";
 import { MAX_FREE_COUNTS } from "../../constants";
 import { Button } from "./ui/button";
 import { Zap } from "lucide-react";
+import { useProModel } from "@/hooks/useProModel";
 
 const FreeCounter = ({ apiLimitCount }: SidebarProps) => {
   //useState, useEffect and mount is used to handle hydration error if encountered
   const [freeLimitCount, setFreeLimitCount] = useState<number | undefined>(0);
   const [mounted, setMounted] = useState(false);
 
+  const ProModal = useProModel();
+
   useEffect(() => {
     setMounted(true);
-    apiLimitCount.then((el) => setFreeLimitCount(el));
+    apiLimitCount?.then((el) => setFreeLimitCount(el));
   }, []);
 
   if (!mounted) return null;
@@ -30,7 +33,11 @@ const FreeCounter = ({ apiLimitCount }: SidebarProps) => {
             </p>
           </div>
           <Progress className="h-3" value={progress} />
-          <Button variant={"premium"} className="w-full mt-4">
+          <Button
+            onClick={ProModal.onOpen}
+            variant={"premium"}
+            className="w-full mt-4"
+          >
             Upgrade
             <Zap className="w-4 h-4 ml-2 fill-white" />
           </Button>

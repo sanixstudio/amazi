@@ -6,7 +6,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { zodResolver } from "@hookform/resolvers/zod";
 
-import {  VideoIcon } from "lucide-react";
+import { VideoIcon } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { Form, FormControl, FormField, FormItem } from "@/components/ui/form";
 
@@ -16,9 +16,11 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import Empty from "@/components/empty";
 import Loader from "@/components/loader";
+import { useProModel } from "@/hooks/useProModel";
 
 const VideoPage = () => {
   const router = useRouter();
+  const proModal = useProModel();
   const [video, setVideo] = useState<string>();
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -36,14 +38,14 @@ const VideoPage = () => {
       setVideo(response.data);
       form.reset();
     } catch (error: any) {
-      //TODO: Open Pro Modal
+      if (error?.response?.status === 403) proModal.onOpen();
       console.log(error);
     } finally {
       router.refresh();
     }
   };
 
-  console.log(video)
+  console.log(video);
 
   return (
     <div>
