@@ -18,7 +18,7 @@ import { cn } from "@/lib/utils";
 import UserAvatar from "@/components/user-avatar";
 import BotAvatar from "@/components/bot-avatar";
 import Loader from "@/components/loader";
-import CopyButton from "@/components/copy-button";
+import { CopyButton } from "@/components/copy-button";
 
 const ConversationPage = () => {
   const router = useRouter();
@@ -127,7 +127,10 @@ const ConversationPage = () => {
                 {message.role !== "user" && (
                   <div className="w-full bg-violet-700/10 absolute top-0 left-0 h-10">
                     <div className="flex items-center h-full justify-end">
-                      <CopyButton bgColor={"bg-violet-700/60"} />
+                      <CopyButton
+                        content={message.content}
+                        bgColor={"bg-violet-700/60"}
+                      />
                     </div>
                   </div>
                 )}
