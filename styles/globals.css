@@ -13,7 +13,7 @@
     --popover: 0 0% 100%;
     --popover-foreground: 240 10% 3.9%;
 
-    --primary: 240 5.9% 10%;
+    --primary: 248 90% 66%;
     --primary-foreground: 0 0% 98%;
 
     --secondary: 240 4.8% 95.9%;
@@ -84,19 +84,19 @@ body {
 
 @layer components {
   .Violet {
-    color: #8B5CF6;
+    color: #8b5cf6;
   }
   .Green {
     color: #047857;
   }
   .Pink {
-    color: #BE185D;
+    color: #be185d;
   }
   .Orange {
-    color: #C2410C;
+    color: #c2410c;
   }
   .Emerald {
-    color: #15803D;
+    color: #15803d;
   }
   .ghostViolet {
     color: #f3eefe;
