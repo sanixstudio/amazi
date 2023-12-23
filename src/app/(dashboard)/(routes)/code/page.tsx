@@ -19,7 +19,7 @@ import UserAvatar from "@/components/user-avatar";
 import BotAvatar from "@/components/bot-avatar";
 import Loader from "@/components/loader";
 import ReactMarkdown from "react-markdown";
-import CopyButton from "@/components/copy-button";
+import { CopyButton } from "@/components/copy-button";
 
 const CodePage = () => {
   const router = useRouter();
@@ -128,7 +128,10 @@ const CodePage = () => {
                 {message.role !== "user" && (
                   <div className="w-full bg-green-700/10 absolute top-0 left-0 h-10">
                     <div className="flex items-center h-full justify-end">
-                      <CopyButton bgColor={"bg-green-700/60"} />
+                      <CopyButton
+                        content={message.content}
+                        bgColor={"bg-green-700/60"}
+                      />
                     </div>
                   </div>
                 )}
@@ -153,7 +156,7 @@ const CodePage = () => {
                       ),
                     }}
                     className={cn(
-                      "text-sm overflow-hidden leading-7",
+                      "text-sm overflow-hidden leading-7 relative",
                       message.role !== "user" && "mt-8"
                     )}
                   >
