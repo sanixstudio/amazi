@@ -6,7 +6,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { zodResolver } from "@hookform/resolvers/zod";
 
-import { ImageIcon, VideoIcon } from "lucide-react";
+import {  VideoIcon } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { Form, FormControl, FormField, FormItem } from "@/components/ui/form";
 
@@ -96,7 +96,7 @@ const VideoPage = () => {
           {video === undefined && !isLoading && (
             <Empty
               label="No video generated yet."
-              icon={<ImageIcon size={256} className="ghostOrange" />}
+              icon={<VideoIcon size={256} className="ghostOrange" />}
             />
           )}
         </div>

@@ -91,7 +91,7 @@ const MusicPage = () => {
           </div>
         )}
         <div className="space-y-4 mt-4">
-          {!music === undefined && !isLoading && (
+          {music === undefined && !isLoading && (
             <Empty
               label="No music generated yet."
               icon={<Music2Icon size={256} className="ghostEmerald" />}
