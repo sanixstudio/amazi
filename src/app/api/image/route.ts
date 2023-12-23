@@ -1,6 +1,7 @@
 import { auth } from "@clerk/nextjs";
 import { NextResponse } from "next/server";
 import { OpenAI } from "openai";
+import { checkApiLimit, increaseApiLimit } from "../../../../lib/api-limit";
 
 const apiKey = process.env.OPENAI_API_KEY;
 
@@ -36,6 +37,14 @@ export async function POST(req: Request) {
     if (isNaN(numAmount)) {
       return new NextResponse("Invalid amount", { status: 400 });
     }
+
+    const freeTrial = await checkApiLimit();
+
+    if (!freeTrial) {
+      return new NextResponse("Free trial has expired.", { status: 403 });
+    }
+
+    await increaseApiLimit();
 
     const response = await openai.images.generate({
       model: "dall-e-2",
