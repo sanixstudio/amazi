@@ -42,7 +42,7 @@ export const CopyButton = ({
         ) : (
           <>
             <Clipboard size={16} />
-            Copy code
+            Copy
           </>
         )}
       </button>

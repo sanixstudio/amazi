@@ -1,14 +1,11 @@
 "use client";
 
 import * as z from "zod";
-import { MessageSquare } from "lucide-react";
+import { Settings } from "lucide-react";
 import { Heading } from "@/components/heading";
 import { useForm } from "react-hook-form";
 import { formSchema } from "./constants";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
-import { Form, FormControl, FormField, FormItem } from "@/components/ui/form";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import axios from "axios";
@@ -18,11 +15,11 @@ import { cn } from "@/lib/utils";
 import UserAvatar from "@/components/user-avatar";
 import BotAvatar from "@/components/bot-avatar";
 import Loader from "@/components/loader";
+import ReactMarkdown from "react-markdown";
 import { CopyButton } from "@/components/copy-button";
 import { useProModel } from "@/hooks/useProModel";
-import ReactMarkdown from "react-markdown";
 
-const ConversationPage = () => {
+const SettingsPage = () => {
   const router = useRouter();
   const proModal = useProModel();
   const [messages, setMessages] = useState<ChatCompletionUserMessageParam[]>(
@@ -45,7 +42,7 @@ const ConversationPage = () => {
       };
       const newMessages = [...messages, userMessage];
 
-      const response = await axios.post("/api/conversation", {
+      const response = await axios.post("/api/code", {
         messages: newMessages,
       });
 
@@ -54,6 +51,7 @@ const ConversationPage = () => {
       form.reset();
     } catch (error: any) {
       if (error?.response?.status === 403) proModal.onOpen();
+
       console.log(error);
     } finally {
       router.refresh();
@@ -63,55 +61,23 @@ const ConversationPage = () => {
   return (
     <div>
       <Heading
-        title="Conversation"
-        description="Our most advanced conversation model."
-        icon={MessageSquare}
-        iconColor="text-violet-500"
-        bgColor="bg-violet-500/10"
+        title="Settings"
+        description="Change your app settings here"
+        icon={Settings}
+        iconColor="text-gray-700"
+        bgColor="bg-gray-700/10"
       />
       <div className="px-4 lg:px-8">
-        <div>
-          <Form {...form}>
-            <form
-              onSubmit={form.handleSubmit(onSubmit)}
-              className="rounded-lg border w-full p-4 px-3 md:px-6 focus-within:shadow-sm grid grid-cols-12 gap-2"
-            >
-              <FormField
-                name="prompt"
-                render={({ field }) => {
-                  return (
-                    <FormItem className="col-span-12 lg:col-span-10">
-                      <FormControl className="m-0 p-0">
-                        <Input
-                          className="border-0 outline-none focus-visible:ring-0 focus-visible:ring-transparent"
-                          disabled={isLoading}
-                          placeholder="What is the tallest building in the world"
-                          {...field}
-                        />
-                      </FormControl>
-                    </FormItem>
-                  );
-                }}
-              />
-              <Button
-                className="col-span-12 lg:col-span-2 w-full bg-violet-500"
-                disabled={isLoading}
-              >
-                Generate
-              </Button>
-            </form>
-          </Form>
-        </div>
         {isLoading && (
           <div className="p-8 rounded-lg w-full">
-            <Loader color="#8B5CF6" />
+            <Loader color="#15803D" />
           </div>
         )}
-        <div className="space-y-4 mt-4">
+        <div className="space-y-4 mt-56">
           {messages.length === 0 && !isLoading && (
             <Empty
-              label="No conversation started."
-              icon={<MessageSquare size={256} className="ghostViolet" />}
+              label=""
+              icon={<Settings size={256} color="#EBECED" />} //TODO: provide proper color later
             />
           )}
         </div>
@@ -128,11 +94,11 @@ const ConversationPage = () => {
                 )}
               >
                 {message.role !== "user" && (
-                  <div className="w-full bg-violet-700/10 absolute top-0 left-0 h-10">
+                  <div className="w-full bg-green-700/10 absolute top-0 left-0 h-10">
                     <div className="flex items-center h-full justify-end">
                       <CopyButton
                         content={message.content}
-                        bgColor={"bg-violet-700/60"}
+                        bgColor={"bg-green-700/60"}
                       />
                     </div>
                   </div>
@@ -174,4 +140,4 @@ const ConversationPage = () => {
   );
 };
 
-export default ConversationPage;
+export default SettingsPage;

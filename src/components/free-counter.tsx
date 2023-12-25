@@ -17,7 +17,7 @@ const FreeCounter = ({ apiLimitCount }: SidebarProps) => {
   useEffect(() => {
     setMounted(true);
     apiLimitCount?.then((el) => setFreeLimitCount(el));
-  }, []);
+  }, [apiLimitCount]);
 
   if (!mounted) return null;
 
@@ -32,7 +32,7 @@ const FreeCounter = ({ apiLimitCount }: SidebarProps) => {
               {apiLimitCount} / {MAX_FREE_COUNTS}
             </p>
           </div>
-          <Progress className="h-3" value={progress} />
+          <Progress className="h-3 bg-gray-700" value={progress} />
           <Button
             onClick={ProModal.onOpen}
             variant={"premium"}

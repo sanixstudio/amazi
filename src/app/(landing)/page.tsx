@@ -1,15 +1,14 @@
-import { Button } from "@/components/ui/button";
+import LandingHero from "@/components/landing-hero";
+import LandingLayout from "./layout";
+import LandingNavbar from "@/components/landing-navbar";
+import LandingContent from "@/components/landing-content";
 
 export default function Home() {
   return (
-    <div>
-      <h1 className="text-4xl">Welcome</h1>
-      <Button variant={"outline"}>
-        <a href="/sign-in">SignIn</a>
-      </Button>
-      <Button variant={"outline"}>
-        <a href="/sign-up">SignUp</a>
-      </Button>
+    <div className="h-screen">
+      <LandingNavbar />
+      <LandingHero />
+      <LandingContent />
     </div>
   );
 }
