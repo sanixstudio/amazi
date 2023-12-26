@@ -15,6 +15,7 @@ import {
 import { usePathname } from "next/navigation";
 import FreeCounter from "./free-counter";
 import Logo from "./logo";
+import Image from "next/image";
 
 const montserrat = Montserrat({ weight: "600", subsets: ["latin"] });
 
@@ -71,11 +72,20 @@ const Sidebar = ({ apiLimitCount }: SidebarProps) => {
 
   return (
     <div className="space-y-4 py-4 flex flex-col h-full bg-[#111827] text-white">
-      <div className="px-3 py-2 flex-1">
-        <Link href={"/dashboard"} className="flex items-center pl-3 mb-14">
-          <div className={cn("", montserrat.className)}>
-            <Logo />
+      <div className="px-3 py-2 flex-1 mt-2">
+        <Link
+          href={"/dashboard"}
+          className="flex items-center justify-center w-full mb-14"
+        >
+          <div className="relative w-full max-w-[150px] flex justify-center">
+            <Image
+              width={120}
+              height={120}
+              alt="logo"
+              src={"/images/amazi_logo.png"}
+            />
           </div>
+          <div className={cn("", montserrat.className)}>{/* <Logo /> */}</div>
         </Link>
         <div className="space-y-1">
           {routes.map((route) => (

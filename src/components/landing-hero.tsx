@@ -14,7 +14,13 @@ const LandingHero = () => {
         <div className="text-transparent bg-clip-text bg-gradient-to-t from-purple-400 to-pink-600">
           <Typewriter
             options={{
-              strings: ["Hello", "World"],
+              strings: [
+                "Chatbot",
+                "Photo Generation",
+                "Music Generation",
+                "Code Generation",
+                "Video Generation",
+              ],
               autoStart: true,
               loop: true,
             }}

@@ -21,6 +21,7 @@ import Loader from "@/components/loader";
 import ReactMarkdown from "react-markdown";
 import { CopyButton } from "@/components/copy-button";
 import { useProModel } from "@/hooks/useProModel";
+import Spinner from "@/components/spinner";
 
 const CodePage = () => {
   const router = useRouter();
@@ -104,8 +105,9 @@ const CodePage = () => {
           </Form>
         </div>
         {isLoading && (
-          <div className="p-8 rounded-lg w-full">
-            <Loader color="#15803D" />
+          <div className="p-8 rounded-lg w-full flex justify-center">
+            {/* <Loader color="#8B5CF6" /> */}
+            <Spinner />
           </div>
         )}
         <div className="space-y-4 mt-4">
@@ -147,7 +149,7 @@ const CodePage = () => {
                   <ReactMarkdown
                     components={{
                       pre: ({ node, ...props }) => (
-                        <div className="overflow-auto w-full my-2 bg-black/10 p-2 rounded-lg">
+                        <div className="overflow-auto w-full my-2 bg-[#010001e3] text-white p-2 rounded-lg">
                           <pre {...props} />
                         </div>
                       ),

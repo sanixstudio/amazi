@@ -17,6 +17,7 @@ import { Button } from "@/components/ui/button";
 import Empty from "@/components/empty";
 import Loader from "@/components/loader";
 import { useProModel } from "@/hooks/useProModel";
+import Spinner from "@/components/spinner";
 
 const MusicPage = () => {
   const router = useRouter();
@@ -88,8 +89,9 @@ const MusicPage = () => {
           </Form>
         </div>
         {isLoading && (
-          <div className="p-8 rounded-lg w-full">
-            <Loader color="#15803D" />
+          <div className="p-8 rounded-lg w-full flex justify-center">
+            {/* <Loader color="#8B5CF6" /> */}
+            <Spinner />
           </div>
         )}
         <div className="space-y-4 mt-4">

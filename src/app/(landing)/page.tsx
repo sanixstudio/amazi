@@ -1,5 +1,4 @@
 import LandingHero from "@/components/landing-hero";
-import LandingLayout from "./layout";
 import LandingNavbar from "@/components/landing-navbar";
 import LandingContent from "@/components/landing-content";
 

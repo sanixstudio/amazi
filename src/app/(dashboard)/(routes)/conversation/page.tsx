@@ -21,6 +21,7 @@ import Loader from "@/components/loader";
 import { CopyButton } from "@/components/copy-button";
 import { useProModel } from "@/hooks/useProModel";
 import ReactMarkdown from "react-markdown";
+import Spinner from "@/components/spinner";
 
 const ConversationPage = () => {
   const router = useRouter();
@@ -103,8 +104,9 @@ const ConversationPage = () => {
           </Form>
         </div>
         {isLoading && (
-          <div className="p-8 rounded-lg w-full">
-            <Loader color="#8B5CF6" />
+          <div className="p-8 rounded-lg w-full flex justify-center">
+            {/* <Loader color="#8B5CF6" /> */}
+            <Spinner />
           </div>
         )}
         <div className="space-y-4 mt-4">
@@ -146,7 +148,7 @@ const ConversationPage = () => {
                   <ReactMarkdown
                     components={{
                       pre: ({ node, ...props }) => (
-                        <div className="overflow-auto w-full my-2 bg-black/10 p-2 rounded-lg">
+                        <div className="overflow-auto w-full my-2 bg-[#010001d2] text-white p-2 rounded-lg">
                           <pre {...props} />
                         </div>
                       ),
@@ -158,7 +160,7 @@ const ConversationPage = () => {
                       ),
                     }}
                     className={cn(
-                      "text-sm overflow-hidden leading-7 relative",
+                      "text-sm overflow-hidden w-[1440px] leading-7 relative",
                       message.role !== "user" && "mt-8"
                     )}
                   >

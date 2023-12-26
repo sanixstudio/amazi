@@ -26,6 +26,7 @@ import {
 import { Card, CardFooter } from "@/components/ui/card";
 import Image from "next/image";
 import { useProModel } from "@/hooks/useProModel";
+import Spinner from "@/components/spinner";
 
 const ImagePage = () => {
   const router = useRouter();
@@ -157,8 +158,9 @@ const ImagePage = () => {
           </Form>
         </div>
         {isLoading && (
-          <div className="p-8 rounded-lg w-full">
-            <Loader color="#BE185D" />
+          <div className="p-8 rounded-lg w-full flex justify-center">
+            {/* <Loader color="#8B5CF6" /> */}
+            <Spinner />
           </div>
         )}
         <div className="space-y-4 mt-4">
