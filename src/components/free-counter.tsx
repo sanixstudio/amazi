@@ -7,7 +7,7 @@ import { Button } from "./ui/button";
 import { Zap } from "lucide-react";
 import { useProModel } from "@/hooks/useProModel";
 
-const FreeCounter = ({ apiLimitCount }: SidebarProps) => {
+const FreeCounter = ({ apiLimitCount, isPro }: SidebarProps) => {
   //useState, useEffect and mount is used to handle hydration error if encountered
   const [freeLimitCount, setFreeLimitCount] = useState<number | undefined>(0);
   const [mounted, setMounted] = useState(false);

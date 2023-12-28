@@ -1,37 +1,27 @@
-"use client";
-
 import { Settings } from "lucide-react";
 import { Heading } from "@/components/heading";
-import Empty from "@/components/empty";
-import Spinner from "@/components/spinner";
+import { checkSubscription } from "@/lib/subscription";
+import SubscriptionButton from "@/components/subscription-button";
 
-const SettingsPage = () => {
+const SettingsPage = async () => {
+  const isPro = await checkSubscription();
+
   return (
     <div>
       <Heading
         title="Settings"
-        description="Change your app settings here"
+        description="Manager account settings"
         icon={Settings}
         iconColor="text-gray-700"
         bgColor="bg-gray-700/10"
       />
-      <div className="px-4 lg:px-8">
-        {true && (
-          <div className="p-8 rounded-lg w-full flex justify-center items-center">
-            <Spinner />
-          </div>
-        )}
-        <div className="space-y-4 mt-56">
-          {true && true && (
-            <Empty
-              label=""
-              icon={<Settings size={256} color="#EBECED" />} //TODO: provide proper color later
-            />
-          )}
+      <div className="px-4 lg:px-8 space-y-4">
+        <div className="text-muted-foreground text-sm">
+          {isPro
+            ? "You are currently on a pro plan"
+            : "You are currently on a free plan"}
         </div>
-        <div className="space-y-4 mt-4">
-          <h1>Setting</h1>
-        </div>
+        <SubscriptionButton isPro={isPro} />
       </div>
     </div>
   );

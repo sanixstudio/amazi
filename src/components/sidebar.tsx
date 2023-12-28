@@ -14,7 +14,6 @@ import {
 } from "lucide-react";
 import { usePathname } from "next/navigation";
 import FreeCounter from "./free-counter";
-import Logo from "./logo";
 import Image from "next/image";
 import ProdBadge from "./pro-badge";
 
@@ -66,9 +65,10 @@ const routes = [
 
 export type SidebarProps = {
   apiLimitCount: Promise<number | undefined>;
+  isPro: boolean;
 };
 
-const Sidebar = ({ apiLimitCount }: SidebarProps) => {
+const Sidebar = ({ apiLimitCount, isPro }: SidebarProps) => {
   const pathName = usePathname();
 
   return (
@@ -108,8 +108,11 @@ const Sidebar = ({ apiLimitCount }: SidebarProps) => {
           ))}
         </div>
       </div>
-      {/* <FreeCounter apiLimitCount={apiLimitCount} /> */}
-      <ProdBadge />
+      {isPro ? (
+        <ProdBadge />
+      ) : (
+        <FreeCounter apiLimitCount={apiLimitCount} isPro={isPro} />
+      )}
     </div>
   );
 };

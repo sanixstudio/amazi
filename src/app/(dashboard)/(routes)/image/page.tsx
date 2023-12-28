@@ -15,7 +15,6 @@ import { amountOptions, formSchema, resolutionOptions } from "./constants";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import Empty from "@/components/empty";
-import Loader from "@/components/loader";
 import {
   Select,
   SelectContent,
