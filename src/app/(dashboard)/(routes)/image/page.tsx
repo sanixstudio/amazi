@@ -26,6 +26,7 @@ import { Card, CardFooter } from "@/components/ui/card";
 import Image from "next/image";
 import { useProModel } from "@/hooks/useProModel";
 import Spinner from "@/components/spinner";
+import toast from "react-hot-toast";
 
 const ImagePage = () => {
   const router = useRouter();
@@ -50,7 +51,11 @@ const ImagePage = () => {
       setImages(urls);
       form.reset();
     } catch (error: any) {
-      if (error?.response?.status === 403) proModal.onOpen();
+      if (error?.response?.status === 403) {
+        proModal.onOpen();
+      } else {
+        toast.error("Something went wrong");
+      }
       console.log(error);
     } finally {
       router.refresh();
