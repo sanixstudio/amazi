@@ -3,6 +3,7 @@ import { cn } from "@/lib/utils";
 import { Clipboard } from "lucide-react";
 import CopyToClipboard from "react-copy-to-clipboard";
 import { ChatCompletionContentPart } from "openai/resources/index.mjs";
+import { Button } from "./ui/button";
 
 export const CopyButton = ({
   content,
@@ -28,7 +29,7 @@ export const CopyButton = ({
 
   return (
     <CopyToClipboard text={content as string} onCopy={() => setCopied(true)}>
-      <button
+      <Button
         className={cn(
           "flex gap-2 text-white p-2 py-1 text-xs mr-2 rounded-md hover:underline cursor-pointer",
           bgColor
@@ -45,7 +46,7 @@ export const CopyButton = ({
             Copy
           </>
         )}
-      </button>
+      </Button>
     </CopyToClipboard>
   );
 };

@@ -15,7 +15,6 @@ import { formSchema } from "./constants";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import Empty from "@/components/empty";
-import Loader from "@/components/loader";
 import { useProModel } from "@/hooks/useProModel";
 import Spinner from "@/components/spinner";
 import toast from "react-hot-toast";
@@ -50,8 +49,6 @@ const VideoPage = () => {
       router.refresh();
     }
   };
-
-  console.log(video);
 
   return (
     <div>

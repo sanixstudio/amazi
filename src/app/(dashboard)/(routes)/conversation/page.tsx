@@ -17,7 +17,6 @@ import Empty from "@/components/empty";
 import { cn } from "@/lib/utils";
 import UserAvatar from "@/components/user-avatar";
 import BotAvatar from "@/components/bot-avatar";
-import Loader from "@/components/loader";
 import { CopyButton } from "@/components/copy-button";
 import { useProModel } from "@/hooks/useProModel";
 import ReactMarkdown from "react-markdown";

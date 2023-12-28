@@ -1,3 +1,5 @@
+"use server";
+
 import { auth } from "@clerk/nextjs";
 import prismadb from "./prismadb";
 
@@ -21,6 +23,8 @@ export const checkSubscription = async () => {
       stripePriceId: true,
     },
   });
+
+  console.log("User Subscription: ", userSubscription);
 
   if (!userSubscription) {
     return false;

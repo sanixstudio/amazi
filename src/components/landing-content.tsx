@@ -1,6 +1,5 @@
 "use client";
 
-import { Item } from "@radix-ui/react-select";
 import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
 
 const testimonials = [
@@ -36,7 +35,7 @@ const testimonials = [
 
 const LandingContent = () => {
   return (
-    <div className="px-10 pb-20">
+    <div className="px-10 pb-20 mt-10">
       <h2 className="text-center text-4xl text-white font-extrabold mb-10">
         Testimonials
       </h2>

@@ -7,7 +7,11 @@ export async function POST(req: Request) {
   const body = await req.text();
   const signature = req.headers.get("stripe-signature") as string;
 
+  console.log("Submitting...");
+
   let event: Stripe.Event;
+
+  console.log("hi");
 
   try {
     event = stripe.webhooks.constructEvent(
@@ -55,13 +59,6 @@ export async function POST(req: Request) {
           stripeCurrentPeriodEnd: new Date(
             subscription.current_period_end * 1000
           ),
-        },
-      });
-
-      const userApiLimit = await prismadb.userApiLimit.update({
-        where: { userId: session?.metadata?.userId },
-        data: {
-          count: 150000,
         },
       });
     }

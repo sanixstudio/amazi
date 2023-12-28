@@ -15,7 +15,8 @@ import {
 import { usePathname } from "next/navigation";
 import FreeCounter from "./free-counter";
 import Image from "next/image";
-import ProdBadge from "./pro-badge";
+import ProBadge from "./pro-badge";
+import { useEffect, useState } from "react";
 
 const montserrat = Montserrat({ weight: "600", subsets: ["latin"] });
 
@@ -65,11 +66,18 @@ const routes = [
 
 export type SidebarProps = {
   apiLimitCount: Promise<number | undefined>;
-  isPro: Promise<boolean> | undefined;
+  isPro?: boolean;
 };
 
 const Sidebar = ({ apiLimitCount, isPro }: SidebarProps) => {
   const pathName = usePathname();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) return null;
 
   return (
     <div className="space-y-4 py-4 flex flex-col h-full bg-[#111827] text-white">
@@ -108,11 +116,7 @@ const Sidebar = ({ apiLimitCount, isPro }: SidebarProps) => {
           ))}
         </div>
       </div>
-      {isPro ? (
-        <ProdBadge />
-      ) : (
-        <FreeCounter apiLimitCount={apiLimitCount} isPro={isPro} />
-      )}
+      {isPro ? <ProBadge /> : <FreeCounter apiLimitCount={apiLimitCount} />}
     </div>
   );
 };
