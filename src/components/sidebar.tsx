@@ -65,7 +65,7 @@ const routes = [
 
 export type SidebarProps = {
   apiLimitCount: Promise<number | undefined>;
-  isPro: boolean;
+  isPro: Promise<boolean> | undefined;
 };
 
 const Sidebar = ({ apiLimitCount, isPro }: SidebarProps) => {

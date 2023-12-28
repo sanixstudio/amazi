@@ -6,7 +6,7 @@ import React from "react";
 
 const DashboardLayout = async ({ children }: { children: React.ReactNode }) => {
   const apiLimitCount = getApiLimitCount();
-  const isPro = await checkSubscription();
+  const isPro = checkSubscription();
 
   return (
     <div className="h-full relative">

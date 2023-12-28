@@ -6,15 +6,15 @@ import { Menu } from "lucide-react";
 import { Button } from "./ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "./ui/sheet";
 import Sidebar from "./sidebar";
+import { checkSubscription } from "@/lib/subscription";
 
 const MobileSidebar = ({
   apiLimitCount,
-  isPro,
 }: {
   apiLimitCount: Promise<number | undefined>;
-  isPro: boolean;
 }) => {
   const [isMounted, setIsMounted] = useState(false);
+  const isPro = checkSubscription();
 
   useEffect(() => {
     setIsMounted(true);
