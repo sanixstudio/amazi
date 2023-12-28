@@ -116,4 +116,11 @@ body {
   .ghostGray {
     color: #e1ece8;
   }
+  .bgPremium {
+    background-image: linear-gradient(
+      rgb(99 102 241),
+      rgb(168 85 247),
+      rgb(236 72 153)
+    );
+  }
 }

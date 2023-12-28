@@ -23,7 +23,7 @@ model UserSubscription {
   id                     String   @id @default(cuid())
   userId                 String   @unique
   stripeCustomerId       String?  @map(name: "stripe_customer_id")
-  stripeSubscriptionId   String   @map(name: "stripe_subscrption_id")
+  stripeSubscriptionId   String   @map(name: "stripe_subscription_id")
   stripePriceId          String   @map(name: "stripe_price_id")
   stripeCurrentPeriodEnd DateTime @map(name: "stripe_current_period_end")
 }

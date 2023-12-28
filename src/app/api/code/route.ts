@@ -2,7 +2,7 @@ import { auth } from "@clerk/nextjs";
 import { NextResponse } from "next/server";
 import { OpenAI } from "openai";
 import { ChatCompletionSystemMessageParam } from "openai/resources/index.mjs";
-import { checkApiLimit, increaseApiLimit } from "../../../../lib/api-limit";
+import { checkApiLimit, increaseApiLimit } from "../../../lib/api-limit";
 
 const apiKey = process.env.OPENAI_API_KEY;
 

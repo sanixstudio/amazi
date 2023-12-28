@@ -1,7 +1,7 @@
 import Navbar from "@/components/navbar";
 import Sidebar from "@/components/sidebar";
+import { getApiLimitCount } from "@/lib/api-limit";
 import React from "react";
-import { getApiLimitCount } from "../../../lib/api-limit";
 
 const DashboardLayout = async ({ children }: { children: React.ReactNode }) => {
   const apiLimitCount = getApiLimitCount();

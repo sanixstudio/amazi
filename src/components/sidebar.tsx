@@ -16,6 +16,7 @@ import { usePathname } from "next/navigation";
 import FreeCounter from "./free-counter";
 import Logo from "./logo";
 import Image from "next/image";
+import ProdBadge from "./pro-badge";
 
 const montserrat = Montserrat({ weight: "600", subsets: ["latin"] });
 
@@ -107,7 +108,8 @@ const Sidebar = ({ apiLimitCount }: SidebarProps) => {
           ))}
         </div>
       </div>
-      <FreeCounter apiLimitCount={apiLimitCount} />
+      {/* <FreeCounter apiLimitCount={apiLimitCount} /> */}
+      <ProdBadge />
     </div>
   );
 };

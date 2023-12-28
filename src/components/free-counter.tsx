@@ -15,8 +15,13 @@ const FreeCounter = ({ apiLimitCount }: SidebarProps) => {
   const ProModal = useProModel();
 
   useEffect(() => {
-    setMounted(true);
-    apiLimitCount?.then((el) => setFreeLimitCount(el));
+    async function fetchData() {
+      setMounted(true);
+      const el = await apiLimitCount;
+      setFreeLimitCount(el);
+    }
+
+    fetchData();
   }, [apiLimitCount]);
 
   if (!mounted) return null;

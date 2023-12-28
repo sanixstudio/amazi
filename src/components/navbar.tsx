@@ -1,6 +1,6 @@
 import { UserButton } from "@clerk/nextjs";
 import MobileSidebar from "./mobile-sidebar";
-import { getApiLimitCount } from "../../lib/api-limit";
+import { getApiLimitCount } from "../lib/api-limit";
 
 const Navbar = () => {
   const apiLimitCount = getApiLimitCount();
