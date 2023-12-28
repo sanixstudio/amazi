@@ -24,8 +24,6 @@ export const checkSubscription = async () => {
     },
   });
 
-  console.log("User Subscription: ", userSubscription);
-
   if (!userSubscription) {
     return false;
   }
