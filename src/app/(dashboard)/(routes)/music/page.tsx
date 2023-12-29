@@ -108,7 +108,7 @@ const MusicPage = () => {
           )}
         </div>
         <div className="space-y-4 mt-4">
-          {music && (
+          {music?.audio && (
             <audio controls className="w-full mt8">
               <source src={music.audio} type="audio/wav" />
             </audio>

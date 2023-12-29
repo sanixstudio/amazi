@@ -30,8 +30,9 @@ export const CopyButton = ({
   return (
     <CopyToClipboard text={content as string} onCopy={() => setCopied(true)}>
       <Button
+        size={"sm"}
         className={cn(
-          "flex gap-2 text-white p-2 py-1 text-xs mr-2 rounded-md hover:underline cursor-pointer",
+          "flex gap-2 h-7 mr-2 text-white text-xs rounded-md hover:underline cursor-pointer",
           bgColor
         )}
       >

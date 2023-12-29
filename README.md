@@ -18,19 +18,31 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+TODO:
 
-## Learn More
+# Todo List for Project Completion
 
-To learn more about Next.js, take a look at the following resources:
+## Stripe Issues
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Fix Stripe issue in production
+- Fix Cancel Subscription Plan (Pro plan still active even after canceling Subscription)
+-
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## UI Issues
 
-## Deploy on Vercel
+- Fix Hydration issues
+- Make all the Copy button as expected (match the theme)
+- For Code generation, fix the copy button location
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Crisp Issues
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- Fix company name on crisp chat
+
+## API Issues
+
+# Enhancements
+
+1. Save the results of api in a database
+2. Retrieve previous results from database
+3. Implement logic to track tokens
+4. Find best AI API providers

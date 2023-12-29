@@ -19,8 +19,6 @@ const SubscriptionButton = ({ isPro = false }: { isPro: boolean }) => {
     }
   };
 
-  console.log(isPro);
-
   return (
     <Button
       disabled={loading}
