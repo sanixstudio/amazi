@@ -4,7 +4,7 @@ import { NextResponse } from "next/server";
 import prismadb from "../../../lib/prismadb";
 import { stripe } from "../../../lib/stripe";
 
-const settingUrl = absoluteUrl("settings");
+const settingUrl = absoluteUrl("/settings").replace(/\n/g, ""); // Remove newline character
 
 export async function GET() {
   try {
@@ -29,6 +29,8 @@ export async function GET() {
 
       return new NextResponse(JSON.stringify({ url: stripeSession.url }));
     }
+
+    console.log(settingUrl)
 
     const stripeSession = await stripe.checkout.sessions.create({
       success_url: settingUrl,
