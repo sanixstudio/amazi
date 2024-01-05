@@ -20,8 +20,8 @@ import BotAvatar from "@/components/bot-avatar";
 import { CopyButton } from "@/components/copy-button";
 import { useProModel } from "@/hooks/useProModel";
 import ReactMarkdown from "react-markdown";
-import Spinner from "@/components/spinner";
 import toast from "react-hot-toast";
+import Loader from "@/components/loader";
 
 const ConversationPage = () => {
   const router = useRouter();
@@ -109,8 +109,7 @@ const ConversationPage = () => {
         </div>
         {isLoading && (
           <div className="p-8 rounded-lg w-full flex justify-center">
-            {/* <Loader color="#8B5CF6" /> */}
-            <Spinner />
+            <Loader />
           </div>
         )}
         <div className="space-y-4 mt-4">

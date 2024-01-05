@@ -48,13 +48,32 @@ export async function POST(req: Request) {
       await prismadb.userSubscription.update({
         where: {
           stripeSubscriptionId: subscription.id,
-          userId: session?.metadata?.userId as string,
+          userId: session?.metadata?.userId,
         },
         data: {
           stripePriceId: subscription.items.data[0].price.id,
           stripeCurrentPeriodEnd: new Date(
             subscription.current_period_end * 1000
           ),
+        },
+      });
+    }
+
+    // TODO: Fix this
+    if (event.type === "customer.subscription.deleted") {
+      const userId = session?.metadata?.userId;
+
+      if (!userId) {
+        return new NextResponse("User id is required", { status: 400 });
+      }
+
+      // Update the user's subscription status in your database to indicate they are on the free plan.
+      await prismadb.userSubscription.update({
+        where: {
+          userId: session?.metadata?.userId as string,
+        },
+        data: {
+          stripeSubscriptionId: null as unknown as undefined, // Clear the subscription ID
         },
       });
     }

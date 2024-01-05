@@ -25,12 +25,12 @@ TODO:
 ## Stripe Issues
 
 - Fix Stripe issue in production
+- Fix Upgrade to Pro
 - Fix Cancel Subscription Plan (Pro plan still active even after canceling Subscription)
 -
 
 ## UI Issues
 
-- Fix Hydration issues
 - Make all the Copy button as expected (match the theme)
 - For Code generation, fix the copy button location
 

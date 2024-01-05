@@ -27,6 +27,7 @@ import Image from "next/image";
 import { useProModel } from "@/hooks/useProModel";
 import Spinner from "@/components/spinner";
 import toast from "react-hot-toast";
+import Loader from "@/components/loader";
 
 const ImagePage = () => {
   const router = useRouter();
@@ -163,8 +164,7 @@ const ImagePage = () => {
         </div>
         {isLoading && (
           <div className="p-8 rounded-lg w-full flex justify-center">
-            {/* <Loader color="#8B5CF6" /> */}
-            <Spinner />
+            <Loader />
           </div>
         )}
         <div className="space-y-4 mt-4">

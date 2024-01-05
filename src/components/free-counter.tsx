@@ -8,7 +8,6 @@ import { Zap } from "lucide-react";
 import { useProModel } from "@/hooks/useProModel";
 
 const FreeCounter = ({ apiLimitCount }: SidebarProps) => {
-  //useState, useEffect and mount is used to handle hydration error if encountered
   const [freeLimitCount, setFreeLimitCount] = useState<number | undefined>(0);
   const [mounted, setMounted] = useState(false);
 
@@ -32,7 +31,7 @@ const FreeCounter = ({ apiLimitCount }: SidebarProps) => {
     <div className="px-3">
       <Card className="bg-white/10 border-0">
         <CardContent className="py-6">
-          <div className="text-center text-sm text-white mb-4 space-y-2">
+          <div className="text-center text-sm text-white mb-2 sm:mb-4">
             <p>
               {apiLimitCount} / {MAX_FREE_COUNTS}
             </p>

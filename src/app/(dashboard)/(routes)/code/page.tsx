@@ -111,8 +111,7 @@ const CodePage = () => {
         </div>
         {isLoading && (
           <div className="p-8 rounded-lg w-full flex justify-center">
-            {/* <Loader color="#8B5CF6" /> */}
-            <Spinner />
+            <Loader />
           </div>
         )}
         <div className="space-y-4 mt-4">

@@ -84,9 +84,9 @@ const Sidebar = ({ apiLimitCount, isPro }: SidebarProps) => {
       <div className="px-3 py-2 flex-1 mt-2">
         <Link
           href={"/dashboard"}
-          className="flex items-center justify-center w-full mb-14"
+          className="flex items-center justify-center w-full mb-6"
         >
-          <div className="relative w-full max-w-[150px] flex justify-center">
+          <div className="relative w-full max-w-[80px] sm:max-w-[150px] flex justify-center">
             <Image
               width={120}
               height={120}
