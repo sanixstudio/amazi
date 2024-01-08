@@ -1,48 +1,104 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# AMAZI AI - AI Tools for Creative Minds
+
+Welcome to AMAZI AI, a powerful suite of AI tools designed to unleash your creativity. With AMAZI AI, you can harness the power of artificial intelligence to create chat conversations, generate images, craft videos, compose music, and even generate code effortlessly. This README provides you with all the information you need to get started with AMAZI AI.
+
+![AMAZI AI Logo](https://amazi.vercel.app/images/amazi-logo.png)
+
+## Table of Contents
+
+- [Introduction](#introduction)
+- [User Story](#user-story)
+- [Features](#features)
+- [Technologies Used](#technologies-used)
+- [Getting Started](#getting-started)
+- [Usage](#usage)
+- [Pricing](#pricing)
+- [Authentication](#authentication)
+- [Deployment](#deployment)
+- [Support](#support)
+
+## Introduction
+
+AMAZI AI is a cutting-edge AI application built with TypeScript, Next.js, ShadcnUI, TailwindCSS, Stripe, Prisma, and Clerks. It offers a range of creative AI tools to enhance your productivity and creativity. Our user-friendly interface ensures that even beginners can easily harness the power of AI.
+
+## Features
+
+- **Chat Conversation**: Engage in natural language conversations with our AI.
+
+- **Image Generation**: Generate stunning images with AI assistance.
+
+- **Video Generation**: Create captivating videos with AI-powered tools.
+
+- **Music Generation**: Compose music effortlessly using AI algorithms.
+
+- **Code Generation**: Automate code creation with AI-generated code snippets.
+
+## Technologies Used
+
+AMAZI AI is powered by a stack of cutting-edge technologies:
+
+- TypeScript: A statically typed superset of JavaScript for robust development.
+
+- Next.js: A popular React framework for server-rendered applications.
+
+- ShadcnUI: A customizable UI library for a sleek and modern look.
+
+- TailwindCSS: A utility-first CSS framework for rapid UI development.
+
+- Stripe: A secure payment processing system for subscription management.
+
+- Prisma: A modern database toolkit for efficient database operations.
+
+- Clerks: A user authentication library for easy account management.
 
 ## Getting Started
 
-First, run the development server:
+To get started with AMAZI AI, follow these steps:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+1. Clone the repository:
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+   ```bash
+   git clone https://github.com/your/amazi-ai.git
+   ```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+2. Clone the repository:
 
-TODO:
+   ```bash
+   cd amazi-ai
+   npm install
+   ```
 
-# Todo List for Project Completion
+3. Configure environment variables:
+   Create a `.env` file and add your API keys and other configuration settings.
 
-## Stripe Issues
+4. Start the development server:
 
-- Fix Stripe issue in production
-- Fix Upgrade to Pro
-- Fix Cancel Subscription Plan (Pro plan still active even after canceling Subscription)
--
+   ```bash
+   npm run dev
+   ```
 
-## UI Issues
+5. Open your browser and navigate to http://localhost:3000 to access AMAZI AI locally.
 
-- Make all the Copy button as expected (match the theme)
-- For Code generation, fix the copy button location
+## Usage
 
-## Crisp Issues
+Explore the various AI tools within AMAZI AI and let your creativity flow. Whether you're looking to create compelling content or streamline your development process, AMAZI AI has you covered.
 
-- Fix company name on crisp chat
+## Pricing
 
-## API Issues
+- **Free Tier**: Enjoy 5 free trial uses of all AI tools.
 
-# Enhancements
+- **Pro Account**: Upgrade to a Pro account for unlimited access to all AI tools. Payment can be made through Stripe.
 
-1. Save the results of api in a database
-2. Retrieve previous results from database
-3. Implement logic to track tokens
-4. Find best AI API providers
+## Authentication
+
+AMAZI AI uses Clerks for user authentication. Your account is your gateway to a seamless experience with our AI tools.
+
+## Deployment
+
+AMAZI AI is hosted on [https://amazi.vercel.app/](https://amazi.vercel.app/). You can access it from anywhere, anytime.
+
+## Support
+
+We value your feedback and are committed to providing excellent support. If you have any questions, encounter issues, or want to share your experiences, please feel free to reach out to us at [support@amazi.ai](mailto:support@amazi.ai).
+
+Thank you for choosing AMAZI AI. We look forward to seeing the amazing creations you'll bring to life with our AI tools!

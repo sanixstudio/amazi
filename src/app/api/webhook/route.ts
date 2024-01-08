@@ -60,22 +60,35 @@ export async function POST(req: Request) {
     }
 
     // TODO: Fix this
-    if (event.type === "customer.subscription.deleted") {
-      const userId = session?.metadata?.userId;
+    if (event.type === "customer.subscription.updated") {
+      const subscription = event.data.object;
 
-      if (!userId) {
-        return new NextResponse("User id is required", { status: 400 });
+      if (
+        subscription.cancellation_details?.reason === "cancellation_requested"
+      ) {
+        const userId = session?.metadata?.userId; // Extract userId from session metadata
+
+        if (!userId) {
+          console.error("Missing userId in session metadata");
+          // Handle the missing userId case, for example:
+          return new NextResponse("Missing userId in session metadata", {
+            status: 400,
+          });
+        } else {
+          try {
+            await prismadb.userSubscription.update({
+              where: { userId: userId },
+              data: { stripeSubscriptionId: undefined },
+            });
+          } catch (error) {
+            console.error("Error updating subscription:", error);
+            // Handle the update error, potentially logging more details
+            return new NextResponse("Error updating subscription", {
+              status: 500,
+            });
+          }
+        }
       }
-
-      // Update the user's subscription status in your database to indicate they are on the free plan.
-      await prismadb.userSubscription.update({
-        where: {
-          userId: session?.metadata?.userId as string,
-        },
-        data: {
-          stripeSubscriptionId: null as unknown as undefined, // Clear the subscription ID
-        },
-      });
     }
 
     return new NextResponse(null, { status: 200 });
