@@ -1,18 +1,15 @@
-# AMAZI AI - AI Tools for Creative Minds
+# ![AMAZI AI - AI Tools](https://amazi.vercel.app/_next/image?url=%2Fimages%2Famazi_logo.png&w=256&q=75)
 
 Welcome to AMAZI AI, a powerful suite of AI tools designed to unleash your creativity. With AMAZI AI, you can harness the power of artificial intelligence to create chat conversations, generate images, craft videos, compose music, and even generate code effortlessly. This README provides you with all the information you need to get started with AMAZI AI.
-
-![AMAZI AI Logo](https://amazi.vercel.app/images/amazi-logo.png)
 
 ## Table of Contents
 
 - [Introduction](#introduction)
-- [User Story](#user-story)
 - [Features](#features)
 - [Technologies Used](#technologies-used)
 - [Getting Started](#getting-started)
 - [Usage](#usage)
-- [Pricing](#pricing)
+- [Pricing_Feature](#pricing-feature)
 - [Authentication](#authentication)
 - [Deployment](#deployment)
 - [Support](#support)
@@ -37,19 +34,19 @@ AMAZI AI is a cutting-edge AI application built with TypeScript, Next.js, Shadcn
 
 AMAZI AI is powered by a stack of cutting-edge technologies:
 
-- TypeScript: A statically typed superset of JavaScript for robust development.
+- **TypeScript**: A statically typed superset of JavaScript for robust development.
 
-- Next.js: A popular React framework for server-rendered applications.
+- **Next.js**: A popular React framework for server-rendered applications.
 
-- ShadcnUI: A customizable UI library for a sleek and modern look.
+- **ShadcnUI**: A customizable UI library for a sleek and modern look.
 
-- TailwindCSS: A utility-first CSS framework for rapid UI development.
+- **TailwindCSS**: A utility-first CSS framework for rapid UI development.
 
-- Stripe: A secure payment processing system for subscription management.
+- **Stripe**: A secure payment processing system for subscription management.
 
-- Prisma: A modern database toolkit for efficient database operations.
+- **Prisma**: A modern database toolkit for efficient database operations.
 
-- Clerks: A user authentication library for easy account management.
+- **Clerks**: A user authentication library for easy account management.
 
 ## Getting Started
 
@@ -83,7 +80,7 @@ To get started with AMAZI AI, follow these steps:
 
 Explore the various AI tools within AMAZI AI and let your creativity flow. Whether you're looking to create compelling content or streamline your development process, AMAZI AI has you covered.
 
-## Pricing
+## Pricing Feature
 
 - **Free Tier**: Enjoy 5 free trial uses of all AI tools.
 
@@ -98,7 +95,5 @@ AMAZI AI uses Clerks for user authentication. Your account is your gateway to a 
 AMAZI AI is hosted on [https://amazi.vercel.app/](https://amazi.vercel.app/). You can access it from anywhere, anytime.
 
 ## Support
-
-We value your feedback and are committed to providing excellent support. If you have any questions, encounter issues, or want to share your experiences, please feel free to reach out to us at [support@amazi.ai](mailto:support@amazi.ai).
 
 Thank you for choosing AMAZI AI. We look forward to seeing the amazing creations you'll bring to life with our AI tools!
